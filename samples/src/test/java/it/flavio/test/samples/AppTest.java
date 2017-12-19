@@ -1,4 +1,4 @@
-package it.flavio.samples.samples;
+package it.flavio.test.samples;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

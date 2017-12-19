@@ -1,4 +1,4 @@
-package it.flavio.samples.samples;
+package it.flavio.test.samples;
 
 /**
  * Hello world!
