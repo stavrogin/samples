@@ -14,11 +14,12 @@ public class SimpleConsumer implements Consumer {
 	}
 	
 	@Override
-	public void consume(int number) {
+	public synchronized void consume(int number) {
 		storedNumbers.add(Integer.valueOf(number));
-		
+
 		System.out.print("Input: " + number + " -> ");
 		storedNumbers.forEach(n -> System.out.print(n + " "));
+		
 		System.out.println();
 	}
 

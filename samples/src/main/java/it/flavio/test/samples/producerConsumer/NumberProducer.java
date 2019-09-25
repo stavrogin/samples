@@ -1,19 +1,20 @@
 package it.flavio.test.samples.producerConsumer;
 
 import java.util.Random;
-import java.util.concurrent.Callable;
 
 import it.flavio.test.samples.producerConsumer.interfaces.Consumer;
 import it.flavio.test.samples.producerConsumer.interfaces.Producer;
 
-public class NumberProducer implements Producer, Callable<String> {
+public class NumberProducer implements Producer {
 
 	private Consumer consumer;
 	private Random random;
 	private int randomNumberRange;
+	private int randomNumberOffset;
 
-	public NumberProducer(Consumer consumer, int randomNumberRange) {
+	public NumberProducer(Consumer consumer, int randomNumberOffset, int randomNumberRange) {
 		random = new Random();
+		this.randomNumberOffset = randomNumberOffset;
 		this.randomNumberRange = randomNumberRange;
 		this.consumer = consumer;
 	}
@@ -27,7 +28,7 @@ public class NumberProducer implements Producer, Callable<String> {
 	@Override
 	public void produce() {
 		for (int i=0; i<10; i++) {
-			int num = produceSingleNumer(randomNumberRange);
+			int num = randomNumberOffset + produceSingleNumer(randomNumberRange);
 			consumer.consume(num);
 		}
 	}
